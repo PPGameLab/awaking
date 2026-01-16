@@ -1,0 +1,1496 @@
+{
+  "metadata": {
+    "version": "MVP",
+    "description": "Сгенерированная карта из конфигурации",
+    "nodes_count": 97,
+    "edges_count": 104,
+    "kingdoms_count": 8
+  },
+  "nodes": [
+    {
+      "id": "Center",
+      "name": "Center",
+      "pos": [
+        500.0,
+        500.0
+      ],
+      "node_type": "Center",
+      "kingdom": null,
+      "role": "Center"
+    },
+    {
+      "id": "Necro_CAP",
+      "name": "Necro Capital",
+      "pos": [
+        500.0,
+        1000.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Necro",
+      "role": "Capital"
+    },
+    {
+      "id": "Necro_CITY1",
+      "name": "Necro City 1",
+      "pos": [
+        595.0,
+        1000.0
+      ],
+      "node_type": "City",
+      "kingdom": "Necro",
+      "role": "City"
+    },
+    {
+      "id": "Necro_CITY2",
+      "name": "Necro City 2",
+      "pos": [
+        405.0,
+        1000.0
+      ],
+      "node_type": "City",
+      "kingdom": "Necro",
+      "role": "City"
+    },
+    {
+      "id": "Necro_GATE_CTR",
+      "name": "Necro Gate → Center",
+      "pos": [
+        500.0,
+        880.0
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Necro",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Necro_GATE_CW",
+      "name": "Necro Gate → Steel",
+      "pos": [
+        623.55,
+        948.55
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Necro",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Necro_GATE_CCW",
+      "name": "Necro Gate → Water",
+      "pos": [
+        376.1,
+        948.55
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Necro",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Necro_OUT1",
+      "name": "Necro Farm 1",
+      "pos": [
+        585.0,
+        1147.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Necro",
+      "role": "Farm"
+    },
+    {
+      "id": "Necro_OUT2",
+      "name": "Necro Farm 2",
+      "pos": [
+        415.00000000000006,
+        1147.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Necro",
+      "role": "Farm"
+    },
+    {
+      "id": "Necro_OUT3",
+      "name": "Necro Mine 3",
+      "pos": [
+        330.0,
+        1000.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Necro",
+      "role": "Mine"
+    },
+    {
+      "id": "Necro_OUT4",
+      "name": "Necro Lumber 4",
+      "pos": [
+        414.99999999999994,
+        852.7756813566455
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Necro",
+      "role": "Lumber"
+    },
+    {
+      "id": "Necro_OUT5",
+      "name": "Necro TradePost 5",
+      "pos": [
+        585.0,
+        852.7756813566455
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Necro",
+      "role": "TradePost"
+    },
+    {
+      "id": "Necro_OUT6",
+      "name": "Necro Ruin 6",
+      "pos": [
+        670.0,
+        1000.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Necro",
+      "role": "Ruin"
+    },
+    {
+      "id": "Steel_CAP",
+      "name": "Steel Capital",
+      "pos": [
+        853.0,
+        853.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Steel",
+      "role": "Capital"
+    },
+    {
+      "id": "Steel_CITY1",
+      "name": "Steel City 1",
+      "pos": [
+        920.175144212722,
+        785.824855787278
+      ],
+      "node_type": "City",
+      "kingdom": "Steel",
+      "role": "City"
+    },
+    {
+      "id": "Steel_CITY2",
+      "name": "Steel City 2",
+      "pos": [
+        785.824855787278,
+        920.175144212722
+      ],
+      "node_type": "City",
+      "kingdom": "Steel",
+      "role": "City"
+    },
+    {
+      "id": "Steel_GATE_CTR",
+      "name": "Steel Gate → Center",
+      "pos": [
+        768.1471862576143,
+        768.1471862576143
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Steel",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Steel_GATE_CW",
+      "name": "Steel Gate → Body",
+      "pos": [
+        904.45,
+        729.45
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Steel",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Steel_GATE_CCW",
+      "name": "Steel Gate → Necro",
+      "pos": [
+        729.45,
+        904.45
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Steel",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Steel_OUT1",
+      "name": "Steel Farm 1",
+      "pos": [
+        938.0,
+        1000.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Steel",
+      "role": "Farm"
+    },
+    {
+      "id": "Steel_OUT2",
+      "name": "Steel Farm 2",
+      "pos": [
+        768.0,
+        1000.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Steel",
+      "role": "Farm"
+    },
+    {
+      "id": "Steel_OUT3",
+      "name": "Steel Mine 3",
+      "pos": [
+        683.0,
+        853.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Steel",
+      "role": "Mine"
+    },
+    {
+      "id": "Steel_OUT4",
+      "name": "Steel Lumber 4",
+      "pos": [
+        767.9999999999999,
+        705.7756813566455
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Steel",
+      "role": "Lumber"
+    },
+    {
+      "id": "Steel_OUT5",
+      "name": "Steel TradePost 5",
+      "pos": [
+        938.0,
+        705.7756813566455
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Steel",
+      "role": "TradePost"
+    },
+    {
+      "id": "Steel_OUT6",
+      "name": "Steel Ruin 6",
+      "pos": [
+        1023.0,
+        853.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Steel",
+      "role": "Ruin"
+    },
+    {
+      "id": "Body_CAP",
+      "name": "Body Capital",
+      "pos": [
+        1000.0,
+        500.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Body",
+      "role": "Capital"
+    },
+    {
+      "id": "Body_CITY1",
+      "name": "Body City 1",
+      "pos": [
+        1000.0,
+        405.0
+      ],
+      "node_type": "City",
+      "kingdom": "Body",
+      "role": "City"
+    },
+    {
+      "id": "Body_CITY2",
+      "name": "Body City 2",
+      "pos": [
+        1000.0,
+        595.0
+      ],
+      "node_type": "City",
+      "kingdom": "Body",
+      "role": "City"
+    },
+    {
+      "id": "Body_GATE_CTR",
+      "name": "Body Gate → Center",
+      "pos": [
+        880.0,
+        500.0
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Body",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Body_GATE_CW",
+      "name": "Body Gate → Fire",
+      "pos": [
+        948.55,
+        376.1
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Body",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Body_GATE_CCW",
+      "name": "Body Gate → Steel",
+      "pos": [
+        948.55,
+        623.55
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Body",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Body_OUT1",
+      "name": "Body Farm 1",
+      "pos": [
+        1085.0,
+        647.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Body",
+      "role": "Farm"
+    },
+    {
+      "id": "Body_OUT2",
+      "name": "Body Farm 2",
+      "pos": [
+        915.0,
+        647.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Body",
+      "role": "Farm"
+    },
+    {
+      "id": "Body_OUT3",
+      "name": "Body Mine 3",
+      "pos": [
+        830.0,
+        500.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Body",
+      "role": "Mine"
+    },
+    {
+      "id": "Body_OUT4",
+      "name": "Body Lumber 4",
+      "pos": [
+        914.9999999999999,
+        352.77568135664546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Body",
+      "role": "Lumber"
+    },
+    {
+      "id": "Body_OUT5",
+      "name": "Body TradePost 5",
+      "pos": [
+        1085.0,
+        352.77568135664546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Body",
+      "role": "TradePost"
+    },
+    {
+      "id": "Body_OUT6",
+      "name": "Body Ruin 6",
+      "pos": [
+        1170.0,
+        499.99999999999994
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Body",
+      "role": "Ruin"
+    },
+    {
+      "id": "Fire_CAP",
+      "name": "Fire Capital",
+      "pos": [
+        853.0,
+        146.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Fire",
+      "role": "Capital"
+    },
+    {
+      "id": "Fire_CITY1",
+      "name": "Fire City 1",
+      "pos": [
+        785.7299087294074,
+        78.91993723582144
+      ],
+      "node_type": "City",
+      "kingdom": "Fire",
+      "role": "City"
+    },
+    {
+      "id": "Fire_CITY2",
+      "name": "Fire City 2",
+      "pos": [
+        920.2700912705926,
+        213.08006276417856
+      ],
+      "node_type": "City",
+      "kingdom": "Fire",
+      "role": "City"
+    },
+    {
+      "id": "Fire_GATE_CTR",
+      "name": "Fire Gate → Center",
+      "pos": [
+        768.267289139985,
+        230.97274686811704
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Fire",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Fire_GATE_CW",
+      "name": "Fire Gate → Demons",
+      "pos": [
+        729.45,
+        94.9
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Fire",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Fire_GATE_CCW",
+      "name": "Fire Gate → Body",
+      "pos": [
+        904.45,
+        269.9
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Fire",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Fire_OUT1",
+      "name": "Fire Farm 1",
+      "pos": [
+        938.0,
+        293.22431864335454
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Fire",
+      "role": "Farm"
+    },
+    {
+      "id": "Fire_OUT2",
+      "name": "Fire Farm 2",
+      "pos": [
+        768.0,
+        293.2243186433546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Fire",
+      "role": "Farm"
+    },
+    {
+      "id": "Fire_OUT3",
+      "name": "Fire Mine 3",
+      "pos": [
+        683.0,
+        146.00000000000003
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Fire",
+      "role": "Mine"
+    },
+    {
+      "id": "Fire_OUT4",
+      "name": "Fire Lumber 4",
+      "pos": [
+        767.9999999999999,
+        -1.224318643354536
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Fire",
+      "role": "Lumber"
+    },
+    {
+      "id": "Fire_OUT5",
+      "name": "Fire TradePost 5",
+      "pos": [
+        938.0,
+        -1.2243186433545645
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Fire",
+      "role": "TradePost"
+    },
+    {
+      "id": "Fire_OUT6",
+      "name": "Fire Ruin 6",
+      "pos": [
+        1023.0,
+        145.99999999999997
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Fire",
+      "role": "Ruin"
+    },
+    {
+      "id": "Demons_CAP",
+      "name": "Demons Capital",
+      "pos": [
+        500.0,
+        0.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Demons",
+      "role": "Capital"
+    },
+    {
+      "id": "Demons_CITY1",
+      "name": "Demons City 1",
+      "pos": [
+        405.0,
+        0.0
+      ],
+      "node_type": "City",
+      "kingdom": "Demons",
+      "role": "City"
+    },
+    {
+      "id": "Demons_CITY2",
+      "name": "Demons City 2",
+      "pos": [
+        595.0,
+        0.0
+      ],
+      "node_type": "City",
+      "kingdom": "Demons",
+      "role": "City"
+    },
+    {
+      "id": "Demons_GATE_CTR",
+      "name": "Demons Gate → Center",
+      "pos": [
+        500.0,
+        120.0
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Demons",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Demons_GATE_CW",
+      "name": "Demons Gate → Nature",
+      "pos": [
+        376.1,
+        51.099999999999994
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Demons",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Demons_GATE_CCW",
+      "name": "Demons Gate → Fire",
+      "pos": [
+        623.55,
+        51.099999999999994
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Demons",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Demons_OUT1",
+      "name": "Demons Farm 1",
+      "pos": [
+        585.0,
+        147.22431864335456
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Demons",
+      "role": "Farm"
+    },
+    {
+      "id": "Demons_OUT2",
+      "name": "Demons Farm 2",
+      "pos": [
+        415.00000000000006,
+        147.2243186433546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Demons",
+      "role": "Farm"
+    },
+    {
+      "id": "Demons_OUT3",
+      "name": "Demons Mine 3",
+      "pos": [
+        330.0,
+        2.0818995585505004e-14
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Demons",
+      "role": "Mine"
+    },
+    {
+      "id": "Demons_OUT4",
+      "name": "Demons Lumber 4",
+      "pos": [
+        414.99999999999994,
+        -147.22431864335454
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Demons",
+      "role": "Lumber"
+    },
+    {
+      "id": "Demons_OUT5",
+      "name": "Demons TradePost 5",
+      "pos": [
+        585.0,
+        -147.22431864335456
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Demons",
+      "role": "TradePost"
+    },
+    {
+      "id": "Demons_OUT6",
+      "name": "Demons Ruin 6",
+      "pos": [
+        670.0,
+        -4.163799117101001e-14
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Demons",
+      "role": "Ruin"
+    },
+    {
+      "id": "Nature_CAP",
+      "name": "Nature Capital",
+      "pos": [
+        146.0,
+        146.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Nature",
+      "role": "Capital"
+    },
+    {
+      "id": "Nature_CITY1",
+      "name": "Nature City 1",
+      "pos": [
+        78.824855787278,
+        213.175144212722
+      ],
+      "node_type": "City",
+      "kingdom": "Nature",
+      "role": "City"
+    },
+    {
+      "id": "Nature_CITY2",
+      "name": "Nature City 2",
+      "pos": [
+        213.175144212722,
+        78.824855787278
+      ],
+      "node_type": "City",
+      "kingdom": "Nature",
+      "role": "City"
+    },
+    {
+      "id": "Nature_GATE_CTR",
+      "name": "Nature Gate → Center",
+      "pos": [
+        230.8528137423857,
+        230.8528137423857
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Nature",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Nature_GATE_CW",
+      "name": "Nature Gate → Spirit",
+      "pos": [
+        94.9,
+        269.9
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Nature",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Nature_GATE_CCW",
+      "name": "Nature Gate → Demons",
+      "pos": [
+        269.9,
+        94.9
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Nature",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Nature_OUT1",
+      "name": "Nature Farm 1",
+      "pos": [
+        231.0,
+        293.22431864335454
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Nature",
+      "role": "Farm"
+    },
+    {
+      "id": "Nature_OUT2",
+      "name": "Nature Farm 2",
+      "pos": [
+        61.00000000000004,
+        293.2243186433546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Nature",
+      "role": "Farm"
+    },
+    {
+      "id": "Nature_OUT3",
+      "name": "Nature Mine 3",
+      "pos": [
+        -24.0,
+        146.00000000000003
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Nature",
+      "role": "Mine"
+    },
+    {
+      "id": "Nature_OUT4",
+      "name": "Nature Lumber 4",
+      "pos": [
+        60.99999999999993,
+        -1.224318643354536
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Nature",
+      "role": "Lumber"
+    },
+    {
+      "id": "Nature_OUT5",
+      "name": "Nature TradePost 5",
+      "pos": [
+        231.0,
+        -1.2243186433545645
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Nature",
+      "role": "TradePost"
+    },
+    {
+      "id": "Nature_OUT6",
+      "name": "Nature Ruin 6",
+      "pos": [
+        316.0,
+        145.99999999999997
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Nature",
+      "role": "Ruin"
+    },
+    {
+      "id": "Spirit_CAP",
+      "name": "Spirit Capital",
+      "pos": [
+        0.0,
+        500.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Spirit",
+      "role": "Capital"
+    },
+    {
+      "id": "Spirit_CITY1",
+      "name": "Spirit City 1",
+      "pos": [
+        0.0,
+        595.0
+      ],
+      "node_type": "City",
+      "kingdom": "Spirit",
+      "role": "City"
+    },
+    {
+      "id": "Spirit_CITY2",
+      "name": "Spirit City 2",
+      "pos": [
+        0.0,
+        405.0
+      ],
+      "node_type": "City",
+      "kingdom": "Spirit",
+      "role": "City"
+    },
+    {
+      "id": "Spirit_GATE_CTR",
+      "name": "Spirit Gate → Center",
+      "pos": [
+        120.0,
+        500.0
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Spirit",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Spirit_GATE_CW",
+      "name": "Spirit Gate → Water",
+      "pos": [
+        51.099999999999994,
+        623.55
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Spirit",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Spirit_GATE_CCW",
+      "name": "Spirit Gate → Nature",
+      "pos": [
+        51.099999999999994,
+        376.1
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Spirit",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Spirit_OUT1",
+      "name": "Spirit Farm 1",
+      "pos": [
+        85.00000000000001,
+        647.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Spirit",
+      "role": "Farm"
+    },
+    {
+      "id": "Spirit_OUT2",
+      "name": "Spirit Farm 2",
+      "pos": [
+        -84.99999999999996,
+        647.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Spirit",
+      "role": "Farm"
+    },
+    {
+      "id": "Spirit_OUT3",
+      "name": "Spirit Mine 3",
+      "pos": [
+        -170.0,
+        500.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Spirit",
+      "role": "Mine"
+    },
+    {
+      "id": "Spirit_OUT4",
+      "name": "Spirit Lumber 4",
+      "pos": [
+        -85.00000000000007,
+        352.77568135664546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Spirit",
+      "role": "Lumber"
+    },
+    {
+      "id": "Spirit_OUT5",
+      "name": "Spirit TradePost 5",
+      "pos": [
+        85.00000000000001,
+        352.77568135664546
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Spirit",
+      "role": "TradePost"
+    },
+    {
+      "id": "Spirit_OUT6",
+      "name": "Spirit Ruin 6",
+      "pos": [
+        170.0,
+        499.99999999999994
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Spirit",
+      "role": "Ruin"
+    },
+    {
+      "id": "Water_CAP",
+      "name": "Water Capital",
+      "pos": [
+        146.0,
+        853.0
+      ],
+      "node_type": "Capital",
+      "kingdom": "Water",
+      "role": "Capital"
+    },
+    {
+      "id": "Water_CITY1",
+      "name": "Water City 1",
+      "pos": [
+        213.08006276417856,
+        920.2700912705926
+      ],
+      "node_type": "City",
+      "kingdom": "Water",
+      "role": "City"
+    },
+    {
+      "id": "Water_CITY2",
+      "name": "Water City 2",
+      "pos": [
+        78.91993723582144,
+        785.7299087294074
+      ],
+      "node_type": "City",
+      "kingdom": "Water",
+      "role": "City"
+    },
+    {
+      "id": "Water_GATE_CTR",
+      "name": "Water Gate → Center",
+      "pos": [
+        230.97274686811704,
+        768.267289139985
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Water",
+      "role": "GateToCenter"
+    },
+    {
+      "id": "Water_GATE_CW",
+      "name": "Water Gate → Necro",
+      "pos": [
+        269.9,
+        904.45
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Water",
+      "role": "GateToCW"
+    },
+    {
+      "id": "Water_GATE_CCW",
+      "name": "Water Gate → Spirit",
+      "pos": [
+        94.9,
+        729.45
+      ],
+      "node_type": "BorderCastle",
+      "kingdom": "Water",
+      "role": "GateToCCW"
+    },
+    {
+      "id": "Water_OUT1",
+      "name": "Water Farm 1",
+      "pos": [
+        231.0,
+        1000.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Water",
+      "role": "Farm"
+    },
+    {
+      "id": "Water_OUT2",
+      "name": "Water Farm 2",
+      "pos": [
+        61.00000000000004,
+        1000.2243186433545
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Water",
+      "role": "Farm"
+    },
+    {
+      "id": "Water_OUT3",
+      "name": "Water Mine 3",
+      "pos": [
+        -24.0,
+        853.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Water",
+      "role": "Mine"
+    },
+    {
+      "id": "Water_OUT4",
+      "name": "Water Lumber 4",
+      "pos": [
+        60.99999999999993,
+        705.7756813566455
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Water",
+      "role": "Lumber"
+    },
+    {
+      "id": "Water_OUT5",
+      "name": "Water TradePost 5",
+      "pos": [
+        231.0,
+        705.7756813566455
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Water",
+      "role": "TradePost"
+    },
+    {
+      "id": "Water_OUT6",
+      "name": "Water Ruin 6",
+      "pos": [
+        316.0,
+        853.0
+      ],
+      "node_type": "Outpost",
+      "kingdom": "Water",
+      "role": "Ruin"
+    }
+  ],
+  "edges": [
+    [
+      "Necro_CAP",
+      "Necro_CITY1"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_CITY2"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_GATE_CTR"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_GATE_CW"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Necro_GATE_CTR"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_OUT1"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_OUT2"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_OUT3"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_OUT4"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_OUT5"
+    ],
+    [
+      "Necro_CAP",
+      "Necro_OUT6"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_CITY1"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_CITY2"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_GATE_CTR"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_GATE_CW"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Steel_GATE_CTR"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_OUT1"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_OUT2"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_OUT3"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_OUT4"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_OUT5"
+    ],
+    [
+      "Steel_CAP",
+      "Steel_OUT6"
+    ],
+    [
+      "Body_CAP",
+      "Body_CITY1"
+    ],
+    [
+      "Body_CAP",
+      "Body_CITY2"
+    ],
+    [
+      "Body_CAP",
+      "Body_GATE_CTR"
+    ],
+    [
+      "Body_CAP",
+      "Body_GATE_CW"
+    ],
+    [
+      "Body_CAP",
+      "Body_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Body_GATE_CTR"
+    ],
+    [
+      "Body_CAP",
+      "Body_OUT1"
+    ],
+    [
+      "Body_CAP",
+      "Body_OUT2"
+    ],
+    [
+      "Body_CAP",
+      "Body_OUT3"
+    ],
+    [
+      "Body_CAP",
+      "Body_OUT4"
+    ],
+    [
+      "Body_CAP",
+      "Body_OUT5"
+    ],
+    [
+      "Body_CAP",
+      "Body_OUT6"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_CITY1"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_CITY2"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_GATE_CTR"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_GATE_CW"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Fire_GATE_CTR"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_OUT1"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_OUT2"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_OUT3"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_OUT4"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_OUT5"
+    ],
+    [
+      "Fire_CAP",
+      "Fire_OUT6"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_CITY1"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_CITY2"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_GATE_CTR"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_GATE_CW"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Demons_GATE_CTR"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_OUT1"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_OUT2"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_OUT3"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_OUT4"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_OUT5"
+    ],
+    [
+      "Demons_CAP",
+      "Demons_OUT6"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_CITY1"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_CITY2"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_GATE_CTR"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_GATE_CW"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Nature_GATE_CTR"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_OUT1"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_OUT2"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_OUT3"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_OUT4"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_OUT5"
+    ],
+    [
+      "Nature_CAP",
+      "Nature_OUT6"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_CITY1"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_CITY2"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_GATE_CTR"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_GATE_CW"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Spirit_GATE_CTR"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_OUT1"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_OUT2"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_OUT3"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_OUT4"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_OUT5"
+    ],
+    [
+      "Spirit_CAP",
+      "Spirit_OUT6"
+    ],
+    [
+      "Water_CAP",
+      "Water_CITY1"
+    ],
+    [
+      "Water_CAP",
+      "Water_CITY2"
+    ],
+    [
+      "Water_CAP",
+      "Water_GATE_CTR"
+    ],
+    [
+      "Water_CAP",
+      "Water_GATE_CW"
+    ],
+    [
+      "Water_CAP",
+      "Water_GATE_CCW"
+    ],
+    [
+      "Center",
+      "Water_GATE_CTR"
+    ],
+    [
+      "Water_CAP",
+      "Water_OUT1"
+    ],
+    [
+      "Water_CAP",
+      "Water_OUT2"
+    ],
+    [
+      "Water_CAP",
+      "Water_OUT3"
+    ],
+    [
+      "Water_CAP",
+      "Water_OUT4"
+    ],
+    [
+      "Water_CAP",
+      "Water_OUT5"
+    ],
+    [
+      "Water_CAP",
+      "Water_OUT6"
+    ],
+    [
+      "Necro_GATE_CW",
+      "Steel_GATE_CCW"
+    ],
+    [
+      "Steel_GATE_CW",
+      "Body_GATE_CCW"
+    ],
+    [
+      "Body_GATE_CW",
+      "Fire_GATE_CCW"
+    ],
+    [
+      "Fire_GATE_CW",
+      "Demons_GATE_CCW"
+    ],
+    [
+      "Demons_GATE_CW",
+      "Nature_GATE_CCW"
+    ],
+    [
+      "Nature_GATE_CW",
+      "Spirit_GATE_CCW"
+    ],
+    [
+      "Spirit_GATE_CW",
+      "Water_GATE_CCW"
+    ],
+    [
+      "Water_GATE_CW",
+      "Necro_GATE_CCW"
+    ]
+  ]
+}

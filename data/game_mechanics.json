@@ -1,0 +1,121 @@
+{
+  "status": "CANON-DRAFT",
+  "version": "MVP",
+  "description": "Базовая механика игры для MVP",
+  "genre": {
+    "type": "гибрид",
+    "primary_reference": "Battle Brothers",
+    "note": "ориентируемся пока на Battle Brothers"
+  },
+  "combat": {
+    "type": "пошаговый",
+    "tactical_map": "гексагональная",
+    "player_control": {
+      "mvp": "автоматически",
+      "future": "управление игроком - добавится позже, обязательно"
+    },
+    "global_map_with_tactical": true
+  },
+  "units": {
+    "definition": "Юнит на глобальной карте - это отряд",
+    "composition": {
+      "min": 1,
+      "max": 40,
+      "note": "В отряд могут входить как один персонаж, так и собранная армия (отряд до 40-50 человек)"
+    },
+    "recruitment": {
+      "method": "Набираются лидерами в поселениях",
+      "reference": "как в Mount & Blade"
+    },
+    "types": {
+      "mvp": ["пехота"],
+      "future": ["кавалерия", "маги", "другие типы"]
+    }
+  },
+  "time_system": {
+    "turns": false,
+    "type": "непрерывное время с внутренними тиками симуляции",
+    "calendar": {
+      "exists": true,
+      "units": ["дни", "недели"],
+      "usage": "контракты/рынок/события"
+    },
+    "flow": {
+      "automatic": true,
+      "player_control": "игрок может ускорять/замедлять/ставить на паузу",
+      "when_active": "время идёт при движении и ожидании"
+    }
+  },
+  "resources": {
+    "mvp": {
+      "money": "деньги",
+      "supplies": "еда/припасы",
+      "tools": "инструменты/материалы",
+      "trade_goods": {
+        "count": "3-5 категорий",
+        "examples": ["еда", "лес", "металл", "ткань", "редкости"]
+      }
+    },
+    "production": {
+      "method": "автоматическое производство и потребление на уровне узлов",
+      "player_access": "игрок получает ресурсы через рынки, контракты и события"
+    },
+    "trade": {
+      "exists": true,
+      "method": "выражается через юниты-караваны",
+      "purpose": "королевства выживают сами, торговля нужна ради излишков, качества и редкостей"
+    }
+  },
+  "economy": {
+    "node_specialization": "Узлы специализированы (фермы/шахты/лес/рынки)",
+    "production_cycle": "Производство и потребление обновляется по календарю (например, раз в неделю)",
+    "player_resources": {
+      "food": "еда тратится ежедневно",
+      "money": "зарплата еженедельно"
+    },
+    "resource_access": "Игрок получает ресурсы через рынок/контракты/события, без управления узлами",
+    "status": "CANON-DRAFT"
+  },
+  "goals": {
+    "main_goal": "Песочница (sandbox)",
+    "start": "Герой начинает одним персонажем, но может набирать отряд в узлах",
+    "victory_conditions": "Опциональная цель — захватить все королевства",
+    "defeat_conditions": "Нет. Герой будет в плену и сможет сбежать. Просто потеряет деньги, репутацию и прочее",
+    "status": "CANON-DRAFT"
+  },
+  "progression": {
+    "player_progression": "Развивает персонажа, прокачивает отряд, захватывает узлы, покупает здания",
+    "reference": "ориентир: Mount & Blade",
+    "levels": {
+      "character": "уровни персонажа",
+      "mercenaries": "уровни наёмников (как в Battle Brothers или Mount & Blade)",
+      "nodes": "уровни узлов и зданий в них"
+    },
+    "unlocks": "TBA",
+    "growth_limits": "Пока ограничений нет, просто будет всё сложнее и сложнее",
+    "status": "CANON-DRAFT"
+  },
+  "kingdoms_interaction": {
+    "relations": {
+      "states": ["ally", "neutral", "enemy"],
+      "influence": "Влияют на риск, пошлины/цены, контракты и проверки"
+    },
+    "player_influence": "Игрок напрямую не меняет отношения (для MVP), максимум — личная репутация у королевств",
+    "status": "CANON-DRAFT"
+  },
+  "kingdoms_uniqueness": {
+    "differences": "TBA",
+    "unique_mechanics": "TBA",
+    "map_representation": "TBA"
+  },
+  "technical": {
+    "platform": "TBA",
+    "technologies": "TBA",
+    "performance_limits": "TBA",
+    "scale": {
+      "units_simultaneously": "TBA",
+      "regions_on_map": "TBA",
+      "optimization_needed": "TBA"
+    }
+  }
+}

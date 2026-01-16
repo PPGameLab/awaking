@@ -1,0 +1,62 @@
+{
+  "status": "CANON-DRAFT",
+  "version": "MVP",
+  "description": "Конфигурация структуры карты. Легко изменяется для добавления новых типов узлов и изменения их количества.",
+  "node_structure": {
+    "per_kingdom": {
+      "Capital": {
+        "count": 1,
+        "roles": ["Capital"],
+        "description": "Столица королевства"
+      },
+      "City": {
+        "count": 2,
+        "roles": ["City"],
+        "description": "Города королевства"
+      },
+      "BorderCastle": {
+        "count": 3,
+        "roles": ["GateToCenter", "GateToCW", "GateToCCW"],
+        "description": "Пограничные замки (ворота)"
+      },
+      "Outpost": {
+        "count": 6,
+        "roles": ["Farm", "Farm", "Mine", "Lumber", "TradePost", "Ruin"],
+        "description": "Аванпосты с различными ролями"
+      }
+    },
+    "center": {
+      "count": 1,
+      "type": "Center",
+      "role": "Center",
+      "description": "Нейтральная зона в центре карты"
+    }
+  },
+  "generation_params": {
+    "gate_to_center_dist": 120.0,
+    "gate_to_neighbor_t": 0.35,
+    "city_offset": 95.0,
+    "outpost_radius": 170.0,
+    "description": "Параметры генерации позиций узлов"
+  },
+  "connection_rules": {
+    "hub_structure": {
+      "enabled": true,
+      "description": "Все узлы соединены со столицей"
+    },
+    "border_gates": {
+      "enabled": true,
+      "description": "BorderCastle к соседям соединены между собой"
+    },
+    "center_connection": {
+      "enabled": true,
+      "description": "Center соединён только с GateToCenter каждого королевства"
+    }
+  },
+  "notes": {
+    "flexibility": "Для добавления новых типов узлов просто добавьте их в node_structure.per_kingdom",
+    "changing_count": "Для изменения количества узлов измените count в соответствующем типе",
+    "new_roles": "Для добавления новых ролей просто добавьте их в массив roles",
+    "structure_changes": "Для изменения структуры связей измените connection_rules"
+  }
+}
