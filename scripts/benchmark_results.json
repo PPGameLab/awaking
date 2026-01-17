@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-01-17T12:41:08.839102",
+    "results": {
+      "map_load_time_ms": 3.319199997349642,
+      "map_load_memory_kb": 108.767578125,
+      "nodes_count": 97,
+      "edges_count": 208,
+      "pathfinding_avg_ms": 0.10668999893823639,
+      "pathfinding_min_ms": 0.05080000846646726,
+      "pathfinding_max_ms": 0.14919998648110777,
+      "pathfinding_total_ms": 1.0668999893823639,
+      "pathfinding_iterations": 10,
+      "memory_current_kb": 0.0,
+      "memory_peak_kb": 0.0
+    }
+  }
+]

@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 # Добавляем src в путь для импортов
-sys.path.insert(0, str(Path(__file__).parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from core.world import World
 from utils.map_visualizer_interactive import InteractiveMapVisualizer
