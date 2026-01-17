@@ -78,7 +78,7 @@ class World:
         print(f"Map loaded: {map_name}")
         if metadata:
             print(f"  Name: {metadata.get('name', 'N/A')}")
-            print(f"  Description: {metadata.get('description', 'N/A')}")
+            # Description may contain non-ASCII, skip for now
     
     def create_simple_map(self):
         """Создаёт простую карту (3 узла треугольником) - использует load_map_from_file"""
@@ -151,15 +151,14 @@ class World:
             self.kingdoms[node.kingdom].append(node.id)
     
     def add_edge(self, node_id_from: str, node_id_to: str):
-        """Добавляет ребро между узлами"""
+        """Добавляет ребро между узлами (ненаправленный граф, хранится один раз)"""
         if node_id_from not in self.nodes or node_id_to not in self.nodes:
             raise ValueError(f"Узлы {node_id_from} или {node_id_to} не существуют")
         
-        # Добавляем в обе стороны (ненаправленный граф)
-        if (node_id_from, node_id_to) not in self.edges:
-            self.edges.append((node_id_from, node_id_to))
-        if (node_id_to, node_id_from) not in self.edges:
-            self.edges.append((node_id_to, node_id_from))
+        # Храним в каноническом виде (от меньшего к большему) для избежания дубликатов
+        canonical = (min(node_id_from, node_id_to), max(node_id_from, node_id_to))
+        if canonical not in self.edges:
+            self.edges.append(canonical)
     
     def get_neighbors(self, node_id: str) -> List[str]:
         """Возвращает список соседних узлов"""
@@ -167,6 +166,8 @@ class World:
         for edge_from, edge_to in self.edges:
             if edge_from == node_id:
                 neighbors.append(edge_to)
+            elif edge_to == node_id:
+                neighbors.append(edge_from)
         return neighbors
     
     def find_path(self, start_id: str, goal_id: str) -> Optional[List[str]]:
