@@ -75,26 +75,29 @@ self.edges: List[Tuple[str, str]] = []  # (from, to)
 
 **Новая структура:**
 ```python
-self.edges: List[Tuple[str, str, Dict]] = []  # (from, to, edge_data)
-# edge_data: {length_km, road_type?, biome?, tags?}
-```
-
-**Альтернатива (более явная):**
-```python
 @dataclass
 class Edge:
     from_id: str
     to_id: str
-    length_km: float
+    # length_km вычисляется автоматически из координат узлов
     road_type: Optional[str] = None  # main, secondary, path, center
     biome: Optional[str] = None
     tags: List[str] = field(default_factory=list)
     blocked_until: Optional[float] = None  # timestamp для временной блокировки
+    
+    def get_length_km(self, world: 'World', km_per_unit: float = 0.1) -> float:
+        """Вычисляет длину ребра в километрах"""
+        from_node = world.nodes.get(self.from_id)
+        to_node = world.nodes.get(self.to_id)
+        if not from_node or not to_node:
+            return 0.0
+        distance_units = from_node.distance_to(to_node)
+        return distance_units * km_per_unit
 
 self.edges: List[Edge] = []
 ```
 
-**Рекомендация:** Использовать dataclass `Edge` для явности и расширяемости.
+**Рекомендация:** Использовать dataclass `Edge` для явности. `length_km` вычисляется автоматически из координат узлов и `km_per_unit` из metadata.
 
 ---
 
@@ -116,6 +119,7 @@ self.edges: List[Edge] = []
       "min_y": 0.0,
       "max_y": 1000.0
     },
+    "km_per_unit": 0.1,
     "notes": "Static map for MVP"
   },
   "nodes": {
@@ -140,19 +144,23 @@ self.edges: List[Edge] = []
     {
       "from": "Node1",
       "to": "Node2",
-      "length_km": 50.0,
       "road_type": "main",
       "biome": null,
       "tags": []
     }
-  ]
+  ],
+  "config": {
+    "km_per_unit": 0.1
+  }
 }
 ```
 
 **Особенности:**
 - `nodes` как dict (удобно редактировать, стабильные ключи)
 - `edges` как list (меньше шанс дублировать)
-- Все поля опциональны, кроме обязательных (id, name, pos для узлов; from, to, length_km для рёбер)
+- `length_km` НЕ хранится - вычисляется из координат узлов и `km_per_unit`
+- Все поля опциональны, кроме обязательных (id, name, pos для узлов; from, to для рёбер)
+- `km_per_unit` в metadata или config - коэффициент для перевода world units в километры
 
 ---
 
@@ -259,8 +267,15 @@ python scripts/view_map.py world_v1 --export map.png
 def get_edge_data(self, from_id: str, to_id: str) -> Optional[Edge]:
     """Возвращает данные ребра"""
     
+def get_edge_length_km(self, edge: Edge) -> float:
+    """Вычисляет длину ребра в километрах"""
+    km_per_unit = self.metadata.get("km_per_unit", 0.1)
+    return edge.get_length_km(self, km_per_unit)
+    
 def calculate_travel_time(self, squad: Squad, edge: Edge) -> float:
     """Рассчитывает время движения по ребру"""
+    length_km = self.get_edge_length_km(edge)
+    road_multiplier = self.get_road_multiplier(edge.road_type)
     # time_hours = length_km / (squad_speed_kmh * road_multiplier)
     
 def get_map_bounds(self) -> Dict[str, float]:
@@ -350,22 +365,26 @@ def get_map_bounds(self) -> Dict[str, float]:
 
 ## 💡 Варианты Координат
 
-### Вариант 1: Логические единицы (рекомендуется)
+### Решение: Логические единицы с автоматическим расчётом
 - Координаты в "world units" (например, 0-2000)
-- `km_per_unit` в metadata (например, 0.1 км/unit)
-- `length_km = distance * km_per_unit`
+- `km_per_unit` в metadata/config (например, 0.1 км/unit)
+- `length_km = distance_units * km_per_unit` (вычисляется автоматически)
 
-**Плюсы:** Гибкость, легко масштабировать
-**Минусы:** Нужен коэффициент
+**Преимущества:**
+- ✅ Не нужно хранить length_km в файле
+- ✅ Автоматически синхронизируется с координатами
+- ✅ Гибкость масштабирования через km_per_unit
+- ✅ Простота редактирования карты
 
-### Вариант 2: Прямые километры
-- Координаты уже в километрах
-- `length_km = distance` напрямую
-
-**Плюсы:** Простота
-**Минусы:** Менее гибко для визуализации
-
-**Рекомендация:** Вариант 1 с `km_per_unit` в metadata.
+**Реализация:**
+```python
+# В Edge классе
+def get_length_km(self, world: 'World', km_per_unit: float) -> float:
+    from_node = world.nodes[self.from_id]
+    to_node = world.nodes[self.to_id]
+    distance_units = from_node.distance_to(to_node)
+    return distance_units * km_per_unit
+```
 
 ---
 
