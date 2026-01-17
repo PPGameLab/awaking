@@ -15,7 +15,6 @@
   },
   "nodes": {
     "Center": {
-      "id": "Center",
       "name": "Center",
       "pos": [500.0, 500.0],
       "tags": ["center", "neutral"],
@@ -31,7 +30,6 @@
       }
     },
     "Node1": {
-      "id": "Node1",
       "name": "Узел 1",
       "pos": [400.0, 300.0],
       "tags": ["city", "settlement"],
@@ -47,7 +45,6 @@
       }
     },
     "Node2": {
-      "id": "Node2",
       "name": "Узел 2",
       "pos": [600.0, 200.0],
       "tags": ["city", "settlement"],
@@ -63,7 +60,6 @@
       }
     },
     "Node3": {
-      "id": "Node3",
       "name": "Узел 3",
       "pos": [600.0, 400.0],
       "tags": ["city", "settlement"],

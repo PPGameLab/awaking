@@ -34,9 +34,8 @@ def convert_legacy_map(input_path: Path, output_path: Path, km_per_unit: float =
         if not node_id:
             continue
         
-        # Конвертируем в новый формат
+        # Конвертируем в новый формат (id - это ключ, не поле)
         new_node = {
-            "id": node_id,
             "name": node.get("name", node_id),
             "pos": node.get("pos", [0.0, 0.0]),
             "tags": [],

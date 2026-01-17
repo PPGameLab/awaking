@@ -52,14 +52,12 @@ class MapViewer:
         # Проверка узлов
         node_ids = set()
         for node_id, node_data in self.nodes.items():
-            # Уникальность ID
+            # Уникальность ID (ключ в словаре)
             if node_id in node_ids:
                 errors.append(f"Duplicate node ID: {node_id}")
             node_ids.add(node_id)
             
-            # Обязательные поля
-            if "id" not in node_data:
-                errors.append(f"Node {node_id} missing 'id'")
+            # Обязательные поля (id не нужен, он уже в ключе)
             if "name" not in node_data:
                 errors.append(f"Node {node_id} missing 'name'")
             if "pos" not in node_data:
