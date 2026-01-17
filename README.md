@@ -74,3 +74,16 @@ python scripts/benchmark_performance.py
 - `data/` - JSON файлы с данными игры
 
 Полная документация находится в папке `docs/`.
+
+## Git Commit Guidelines
+
+**Коммиты должны быть:**
+- На английском языке (латиница)
+- Кратко и лаконично
+- Описывать суть изменений
+
+**Примеры:**
+- ✅ `Add map generation script`
+- ✅ `Fix pathfinding performance`
+- ✅ `Organize project structure`
+- ❌ `Организация структуры проекта: перемещение документации...`
