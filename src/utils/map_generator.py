@@ -9,8 +9,8 @@ from pathlib import Path
 # Добавляем src в путь для импортов
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from entities.node import Node
-from utils.loader import load_json
+from ..entities.node import Node
+from ..utils.loader import load_json
 
 
 def v_sub(a: Tuple[float, float], b: Tuple[float, float]) -> Tuple[float, float]:

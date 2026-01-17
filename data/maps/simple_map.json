@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "name": "Simple Test Map",
+    "description": "Простая карта для тестирования (3 узла треугольником)"
+  },
+  "nodes": [
+    {
+      "id": "Node1",
+      "name": "Узел 1",
+      "pos": [400.0, 300.0],
+      "node_type": "City",
+      "kingdom": "Test",
+      "role": "City"
+    },
+    {
+      "id": "Node2",
+      "name": "Узел 2",
+      "pos": [600.0, 200.0],
+      "node_type": "City",
+      "kingdom": "Test",
+      "role": "City"
+    },
+    {
+      "id": "Node3",
+      "name": "Узел 3",
+      "pos": [600.0, 400.0],
+      "node_type": "City",
+      "kingdom": "Test",
+      "role": "City"
+    }
+  ],
+  "edges": [
+    ["Node1", "Node2"],
+    ["Node2", "Node3"],
+    ["Node3", "Node1"]
+  ]
+}

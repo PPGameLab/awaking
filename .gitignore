@@ -20,16 +20,14 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual Environment
+# Virtual environments
 venv/
 env/
 ENV/
-.venv
 
 # IDE
 .vscode/
 .idea/
-.cursor/
 *.swp
 *.swo
 *~
@@ -39,8 +37,19 @@ ENV/
 Thumbs.db
 
 # Project specific
-*.log
-.pytest_cache/
-.coverage
-htmlcov/
+*.png
+*.jpg
+*.jpeg
+!map_bb_style.png
+!map_visualization.png
+
+# Ignore submodules and test folders
 avaking/
+
+# Generated maps (keep structure, ignore generated)
+data/generated_map.json
+data/maps/generated_map.json
+
+# Test files
+test_output/
+*.log

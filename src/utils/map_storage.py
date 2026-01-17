@@ -4,13 +4,19 @@
 import json
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
-from entities.node import Node
+from ..entities.node import Node
 
 
 class MapStorage:
     """Хранение и загрузка карты в/из JSON"""
     
-    def __init__(self, save_path: str = "data/generated_map.json"):
+    def __init__(self, save_path: str = "data/maps/generated_map.json"):
+        """
+        Инициализация хранилища карт
+        
+        Args:
+            save_path: Путь для сохранения карты (по умолчанию data/maps/generated_map.json)
+        """
         self.save_path = Path(save_path)
     
     def save_map(

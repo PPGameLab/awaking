@@ -48,52 +48,41 @@ class World:
             except Exception as e:
                 print(f"Ошибка загрузки карты: {e}. Создана пустая карта.")
     
-    def create_simple_map(self):
-        """Создаёт простую карту (3 узла треугольником) для тестирования"""
+    def load_map_from_file(self, map_name: str = "simple_map"):
+        """
+        Загружает карту из файла данных
+        
+        Args:
+            map_name: Имя карты (без расширения .json)
+        """
+        from ..utils.map_loader import MapLoader
+        
         # Очищаем текущую карту
         self.nodes.clear()
         self.edges.clear()
         self.kingdoms.clear()
         
-        # Создаём 3 узла треугольником
-        node1 = Node(
-            id="Node1",
-            name="Узел 1",
-            pos=(400.0, 300.0),
-            node_type="City",
-            kingdom="Test",
-            role="City"
-        )
-        
-        node2 = Node(
-            id="Node2",
-            name="Узел 2",
-            pos=(600.0, 200.0),
-            node_type="City",
-            kingdom="Test",
-            role="City"
-        )
-        
-        node3 = Node(
-            id="Node3",
-            name="Узел 3",
-            pos=(600.0, 400.0),
-            node_type="City",
-            kingdom="Test",
-            role="City"
-        )
+        # Загружаем карту
+        loader = MapLoader()
+        nodes, edges, metadata = loader.load_map(map_name)
         
         # Добавляем узлы
-        self.add_node(node1)
-        self.add_node(node2)
-        self.add_node(node3)
+        for node in nodes.values():
+            self.add_node(node)
         
-        # Создаём рёбра (треугольник)
-        self.add_edge("Node1", "Node2")
-        self.add_edge("Node2", "Node3")
-        self.add_edge("Node3", "Node1")
+        # Добавляем рёбра
+        for edge in edges:
+            if len(edge) >= 2:
+                self.add_edge(edge[0], edge[1])
         
-        print("Простая карта создана: 3 узла треугольником")
+        print(f"Map loaded: {map_name}")
+        if metadata:
+            print(f"  Name: {metadata.get('name', 'N/A')}")
+            print(f"  Description: {metadata.get('description', 'N/A')}")
+    
+    def create_simple_map(self):
+        """Создаёт простую карту (3 узла треугольником) - использует load_map_from_file"""
+        self.load_map_from_file("simple_map")
     
     def generate_from_config(
         self,

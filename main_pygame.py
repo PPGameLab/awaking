@@ -28,9 +28,9 @@ def main():
     # Создаём игру
     game = Game()
     
-    # Создаём простую карту (3 узла треугольником)
-    print("Создание простой карты...")
-    game.world.create_simple_map()
+    # Загружаем простую карту (3 узла треугольником)
+    print("Загрузка простой карты...")
+    game.world.load_map_from_file("simple_map")
     
     # Инициализируем игру
     game.initialize(generate_map=False)  # Не генерируем из конфига
