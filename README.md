@@ -68,6 +68,13 @@ python scripts/visualize_map.py
 python scripts/visualize_map_bb.py  # Battle Brothers стиль
 python scripts/visualize_map_interactive.py  # Интерактивная
 
+# Статическая карта (world_v1)
+python scripts/view_map.py world_v1  # Просмотр карты
+python scripts/view_map.py world_v1 --validate  # Валидация
+python scripts/view_map.py world_v1 --interactive  # Интерактивный режим
+python scripts/view_map.py world_v1 --export map.png  # Экспорт изображения
+python scripts/convert_map.py simple_map  # Конвертация из старого формата
+
 # Тест производительности
 python scripts/benchmark_performance.py
 ```

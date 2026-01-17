@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "schema_version": "1",
+    "created_at": "2026-01-17T00:00:00Z",
+    "updated_at": "2026-01-17T00:00:00Z",
+    "bounds": {
+      "min_x": 0.0,
+      "max_x": 1000.0,
+      "min_y": 0.0,
+      "max_y": 1000.0
+    },
+    "km_per_unit": 0.1,
+    "notes": "Static map template for MVP. Fill in nodes and edges."
+  },
+  "nodes": {
+    "Center": {
+      "id": "Center",
+      "name": "Center",
+      "pos": [500.0, 500.0],
+      "tags": ["center", "neutral"],
+      "owner_id": null,
+      "ui": {
+        "icon": null,
+        "color": null,
+        "size": null
+      },
+      "meta": {
+        "importance": null,
+        "lore": null
+      }
+    },
+    "Node1": {
+      "id": "Node1",
+      "name": "Узел 1",
+      "pos": [400.0, 300.0],
+      "tags": ["city", "settlement"],
+      "owner_id": "Kingdom1",
+      "ui": {
+        "icon": null,
+        "color": null,
+        "size": null
+      },
+      "meta": {
+        "importance": null,
+        "lore": null
+      }
+    },
+    "Node2": {
+      "id": "Node2",
+      "name": "Узел 2",
+      "pos": [600.0, 200.0],
+      "tags": ["city", "settlement"],
+      "owner_id": "Kingdom1",
+      "ui": {
+        "icon": null,
+        "color": null,
+        "size": null
+      },
+      "meta": {
+        "importance": null,
+        "lore": null
+      }
+    },
+    "Node3": {
+      "id": "Node3",
+      "name": "Узел 3",
+      "pos": [600.0, 400.0],
+      "tags": ["city", "settlement"],
+      "owner_id": "Kingdom1",
+      "ui": {
+        "icon": null,
+        "color": null,
+        "size": null
+      },
+      "meta": {
+        "importance": null,
+        "lore": null
+      }
+    }
+  },
+  "edges": [
+    {
+      "from": "Node1",
+      "to": "Node2",
+      "road_type": "main",
+      "biome": null,
+      "tags": []
+    },
+    {
+      "from": "Node2",
+      "to": "Node3",
+      "road_type": "main",
+      "biome": null,
+      "tags": []
+    },
+    {
+      "from": "Node3",
+      "to": "Node1",
+      "road_type": "secondary",
+      "biome": null,
+      "tags": []
+    },
+    {
+      "from": "Node1",
+      "to": "Center",
+      "road_type": "path",
+      "biome": null,
+      "tags": ["dangerous"]
+    }
+  ]
+}
