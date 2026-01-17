@@ -85,7 +85,15 @@ class MapViewer:
         
         # Получаем словарь допустимых значений
         dictionary = self.metadata.get("dictionary", {})
-        allowed_owners = set(dictionary.get("owners", []))
+        
+        # owners теперь объект, извлекаем ключи
+        owners_dict = dictionary.get("owners", {})
+        if isinstance(owners_dict, dict):
+            allowed_owners = set(owners_dict.keys())
+        else:
+            # Обратная совместимость со старым форматом (список)
+            allowed_owners = set(owners_dict) if isinstance(owners_dict, list) else set()
+        
         allowed_road_types = set(dictionary.get("road_types", []))
         allowed_biomes = set(dictionary.get("biomes", []))
         allowed_node_tags = set(dictionary.get("node_tags", []))
@@ -112,12 +120,12 @@ class MapViewer:
                 if allowed_owners and owner_id not in allowed_owners:
                     errors.append(f"Node {node_id} has invalid owner_id '{owner_id}'. Allowed: {sorted(allowed_owners)}")
             
-            # Валидация tags по словарю
+            # Валидация tags по словарю (только предупреждения, не ошибки)
             tags = node_data.get("tags", [])
             if allowed_node_tags:
                 for tag in tags:
                     if tag not in allowed_node_tags:
-                        warnings.append(f"Node {node_id} has unknown tag '{tag}'. Allowed: {sorted(allowed_node_tags)}")
+                        warnings.append(f"Node {node_id} has unknown tag '{tag}'. Known tags: {sorted(allowed_node_tags)}")
         
         # Проверка рёбер
         edge_set = set()
@@ -228,7 +236,21 @@ class MapViewer:
         avg_degree = sum(degrees) / len(degrees) if degrees else 0
         
         # Границы
+        auto_bounds = self.metadata.get("auto_bounds", True)
         bounds = self.metadata.get("bounds", {})
+        
+        # Вычисляем границы, если auto_bounds
+        if auto_bounds and self.nodes:
+            x_coords = [node["pos"][0] for node in self.nodes.values()]
+            y_coords = [node["pos"][1] for node in self.nodes.values()]
+            computed_bounds = {
+                "min_x": min(x_coords),
+                "max_x": max(x_coords),
+                "min_y": min(y_coords),
+                "max_y": max(y_coords)
+            }
+        else:
+            computed_bounds = bounds
         
         return {
             "nodes": {
@@ -245,7 +267,8 @@ class MapViewer:
                 "max_degree": max_degree,
                 "avg_degree": round(avg_degree, 2)
             },
-            "bounds": bounds
+            "bounds": computed_bounds,
+            "auto_bounds": auto_bounds
         }
     
     def visualize(self, interactive: bool = False, export_path: Optional[Path] = None):
@@ -258,11 +281,10 @@ class MapViewer:
         ax.set_aspect('equal')
         
         # Получаем границы
+        auto_bounds = self.metadata.get("auto_bounds", True)
         bounds = self.metadata.get("bounds", {})
-        if bounds:
-            ax.set_xlim(bounds.get("min_x", 0), bounds.get("max_x", 1000))
-            ax.set_ylim(bounds.get("min_y", 0), bounds.get("max_y", 1000))
-        else:
+        
+        if auto_bounds or not bounds:
             # Автоматически вычисляем границы
             if self.nodes:
                 x_coords = [node["pos"][0] for node in self.nodes.values()]
@@ -270,6 +292,13 @@ class MapViewer:
                 margin = 50
                 ax.set_xlim(min(x_coords) - margin, max(x_coords) + margin)
                 ax.set_ylim(min(y_coords) - margin, max(y_coords) + margin)
+            else:
+                ax.set_xlim(0, 1000)
+                ax.set_ylim(0, 1000)
+        else:
+            # Используем сохранённые границы
+            ax.set_xlim(bounds.get("min_x", 0), bounds.get("max_x", 1000))
+            ax.set_ylim(bounds.get("min_y", 0), bounds.get("max_y", 1000))
         
         # Рисуем рёбра
         road_type_colors = {
@@ -279,6 +308,8 @@ class MapViewer:
             "center": "#FF6347",
             None: "#808080"
         }
+        
+        km_per_unit = self.metadata.get("km_per_unit", 0.1)
         
         for edge in self.edges:
             from_id = edge.get("from")
@@ -296,11 +327,27 @@ class MapViewer:
             # Толщина линии зависит от типа дороги
             linewidth = 2.0 if road_type == "main" else 1.5 if road_type == "secondary" else 1.0
             
+            # Стиль линии: пунктир для дорог с ручной длиной (извилистые)
+            length_km = edge.get("length_km")
+            if length_km is not None:
+                # Вычисляем прямую длину для сравнения
+                import math
+                dx = to_pos[0] - from_pos[0]
+                dy = to_pos[1] - from_pos[1]
+                straight_length = math.hypot(dx, dy) * km_per_unit
+                if length_km > straight_length * 1.1:  # Если реальная длина больше прямой на 10%
+                    linestyle = "--"  # Пунктир для извилистых дорог
+                else:
+                    linestyle = "-"
+            else:
+                linestyle = "-"
+            
             ax.plot(
                 [from_pos[0], to_pos[0]],
                 [from_pos[1], to_pos[1]],
                 color=color,
                 linewidth=linewidth,
+                linestyle=linestyle,
                 alpha=0.6,
                 zorder=1
             )

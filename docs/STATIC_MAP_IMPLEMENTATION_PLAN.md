@@ -79,14 +79,19 @@ self.edges: List[Tuple[str, str]] = []  # (from, to)
 class Edge:
     from_id: str
     to_id: str
-    # length_km вычисляется автоматически из координат узлов
     road_type: Optional[str] = None  # main, secondary, path, center
+    length_km: Optional[float] = None  # Если указано, используется вместо вычисления
     biome: Optional[str] = None
     tags: List[str] = field(default_factory=list)
     blocked_until: Optional[float] = None  # timestamp для временной блокировки
     
     def get_length_km(self, world: 'World', km_per_unit: float = 0.1) -> float:
         """Вычисляет длину ребра в километрах"""
+        # Если длина указана вручную, используем её
+        if self.length_km is not None:
+            return self.length_km
+        
+        # Иначе вычисляем по прямой между узлами
         from_node = world.nodes.get(self.from_id)
         to_node = world.nodes.get(self.to_id)
         if not from_node or not to_node:
@@ -97,7 +102,9 @@ class Edge:
 self.edges: List[Edge] = []
 ```
 
-**Рекомендация:** Использовать dataclass `Edge` для явности. `length_km` вычисляется автоматически из координат узлов и `km_per_unit` из metadata.
+**Рекомендация:** Использовать dataclass `Edge` для явности. 
+- Если `length_km` указано в ребре - используется оно (для извилистых дорог)
+- Если не указано - вычисляется автоматически по прямой (для прямых дорог)
 
 ---
 
@@ -167,15 +174,20 @@ self.edges: List[Edge] = []
   - **Ключ словаря = ID узла** (не нужно дублировать в поле "id")
   - **Дефолты для ui/meta** в `metadata.defaults` - не нужно хранить null в каждом узле
 - `edges` как list (меньше шанс дублировать)
-- `length_km` НЕ хранится - вычисляется из координат узлов и `km_per_unit`
+- `length_km` в ребре - опциональное поле:
+  - **Если указано** - используется для извилистых дорог (реальная длина)
+  - **Если не указано** - вычисляется автоматически по прямой между узлами
 - Все поля опциональны, кроме обязательных (name, pos для узлов; from, to для рёбер)
-- `km_per_unit` в metadata - коэффициент для перевода world units в километры
+- `km_per_unit` в metadata - коэффициент для перевода world units в километры (используется при автоматическом вычислении)
+- `auto_bounds` в metadata - автоматически вычислять границы из координат узлов (по умолчанию true)
+  - Если `true` - границы вычисляются автоматически, поле `bounds` не нужно
+  - Если `false` - используются сохранённые границы из `bounds`
 - `defaults` в metadata - дефолтные значения для ui/meta (применяются при загрузке)
 - `dictionary` в metadata - справочник допустимых значений для валидации:
-  - `owners` - допустимые owner_id
-  - `road_types` - допустимые типы дорог
-  - `biomes` - допустимые биомы
-  - `node_tags` - допустимые теги узлов
+  - `owners` - объект с владельцами `{owner_id: {name, ...}}` (в игре может меняться динамически)
+  - `road_types` - допустимые типы дорог (строгая валидация)
+  - `biomes` - допустимые биомы (предупреждения)
+  - `node_tags` - известные теги узлов (только предупреждения, можно использовать любые теги)
 
 ---
 
