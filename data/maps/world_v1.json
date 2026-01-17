@@ -11,6 +11,23 @@
       "max_y": 1000.0
     },
     "km_per_unit": 0.1,
+    "defaults": {
+      "node_ui": {
+        "icon": null,
+        "color": null,
+        "size": null
+      },
+      "node_meta": {
+        "importance": null,
+        "lore": null
+      }
+    },
+    "dictionary": {
+      "owners": ["Kingdom1", "Kingdom2", "Kingdom3", "Kingdom4", "Kingdom5", "Kingdom6", "Kingdom7", "Kingdom8"],
+      "road_types": ["main", "secondary", "path", "center"],
+      "biomes": ["plains", "forest", "mountain", "desert", "swamp"],
+      "node_tags": ["city", "settlement", "capital", "outpost", "center", "neutral", "farm", "mine", "lumber", "tradepost", "ruin"]
+    },
     "notes": "Static map template for MVP. Fill in nodes and edges."
   },
   "nodes": {
@@ -18,61 +35,25 @@
       "name": "Center",
       "pos": [500.0, 500.0],
       "tags": ["center", "neutral"],
-      "owner_id": null,
-      "ui": {
-        "icon": null,
-        "color": null,
-        "size": null
-      },
-      "meta": {
-        "importance": null,
-        "lore": null
-      }
+      "owner_id": null
     },
     "Node1": {
       "name": "Узел 1",
       "pos": [400.0, 300.0],
       "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1",
-      "ui": {
-        "icon": null,
-        "color": null,
-        "size": null
-      },
-      "meta": {
-        "importance": null,
-        "lore": null
-      }
+      "owner_id": "Kingdom1"
     },
     "Node2": {
       "name": "Узел 2",
       "pos": [600.0, 200.0],
       "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1",
-      "ui": {
-        "icon": null,
-        "color": null,
-        "size": null
-      },
-      "meta": {
-        "importance": null,
-        "lore": null
-      }
+      "owner_id": "Kingdom1"
     },
     "Node3": {
       "name": "Узел 3",
       "pos": [600.0, 400.0],
       "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1",
-      "ui": {
-        "icon": null,
-        "color": null,
-        "size": null
-      },
-      "meta": {
-        "importance": null,
-        "lore": null
-      }
+      "owner_id": "Kingdom1"
     }
   },
   "edges": [

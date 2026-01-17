@@ -32,9 +32,43 @@ class MapViewer:
     def __init__(self, map_path: Path):
         self.map_path = map_path
         self.data = self._load_map()
-        self.nodes = self.data.get("nodes", {})
-        self.edges = self.data.get("edges", [])
         self.metadata = self.data.get("metadata", {})
+        self.defaults = self.metadata.get("defaults", {})
+        
+        # Применяем дефолты к узлам
+        self.nodes = self._apply_node_defaults(self.data.get("nodes", {}))
+        self.edges = self.data.get("edges", [])
+    
+    def _apply_node_defaults(self, nodes: Dict) -> Dict:
+        """Применяет дефолты к узлам"""
+        node_ui_default = self.defaults.get("node_ui", {})
+        node_meta_default = self.defaults.get("node_meta", {})
+        
+        result = {}
+        for node_id, node_data in nodes.items():
+            node = node_data.copy()
+            
+            # Применяем дефолты для ui
+            if "ui" not in node:
+                node["ui"] = node_ui_default.copy()
+            else:
+                # Мержим с дефолтами
+                ui = node_ui_default.copy()
+                ui.update(node.get("ui", {}))
+                node["ui"] = ui
+            
+            # Применяем дефолты для meta
+            if "meta" not in node:
+                node["meta"] = node_meta_default.copy()
+            else:
+                # Мержим с дефолтами
+                meta = node_meta_default.copy()
+                meta.update(node.get("meta", {}))
+                node["meta"] = meta
+            
+            result[node_id] = node
+        
+        return result
         
     def _load_map(self) -> Dict:
         """Загружает карту из JSON"""
@@ -48,6 +82,13 @@ class MapViewer:
         """Валидирует карту"""
         errors = []
         warnings = []
+        
+        # Получаем словарь допустимых значений
+        dictionary = self.metadata.get("dictionary", {})
+        allowed_owners = set(dictionary.get("owners", []))
+        allowed_road_types = set(dictionary.get("road_types", []))
+        allowed_biomes = set(dictionary.get("biomes", []))
+        allowed_node_tags = set(dictionary.get("node_tags", []))
         
         # Проверка узлов
         node_ids = set()
@@ -64,6 +105,19 @@ class MapViewer:
                 errors.append(f"Node {node_id} missing 'pos'")
             elif len(node_data["pos"]) != 2:
                 errors.append(f"Node {node_id} invalid 'pos' (must be [x, y])")
+            
+            # Валидация owner_id по словарю
+            owner_id = node_data.get("owner_id")
+            if owner_id is not None:
+                if allowed_owners and owner_id not in allowed_owners:
+                    errors.append(f"Node {node_id} has invalid owner_id '{owner_id}'. Allowed: {sorted(allowed_owners)}")
+            
+            # Валидация tags по словарю
+            tags = node_data.get("tags", [])
+            if allowed_node_tags:
+                for tag in tags:
+                    if tag not in allowed_node_tags:
+                        warnings.append(f"Node {node_id} has unknown tag '{tag}'. Allowed: {sorted(allowed_node_tags)}")
         
         # Проверка рёбер
         edge_set = set()
@@ -80,6 +134,18 @@ class MapViewer:
                 errors.append(f"Edge {i} references non-existent node: {from_id}")
             if to_id not in self.nodes:
                 errors.append(f"Edge {i} references non-existent node: {to_id}")
+            
+            # Валидация road_type по словарю
+            road_type = edge.get("road_type")
+            if road_type is not None:
+                if allowed_road_types and road_type not in allowed_road_types:
+                    errors.append(f"Edge {i} ({from_id} -> {to_id}) has invalid road_type '{road_type}'. Allowed: {sorted(allowed_road_types)}")
+            
+            # Валидация biome по словарю
+            biome = edge.get("biome")
+            if biome is not None:
+                if allowed_biomes and biome not in allowed_biomes:
+                    warnings.append(f"Edge {i} ({from_id} -> {to_id}) has unknown biome '{biome}'. Allowed: {sorted(allowed_biomes)}")
             
             # Проверка дубликатов (A-B == B-A)
             canonical = tuple(sorted([from_id, to_id]))

@@ -120,6 +120,23 @@ self.edges: List[Edge] = []
       "max_y": 1000.0
     },
     "km_per_unit": 0.1,
+    "defaults": {
+      "node_ui": {
+        "icon": null,
+        "color": null,
+        "size": null
+      },
+      "node_meta": {
+        "importance": null,
+        "lore": null
+      }
+    },
+    "dictionary": {
+      "owners": ["Kingdom1", "Kingdom2"],
+      "road_types": ["main", "secondary", "path", "center"],
+      "biomes": ["plains", "forest"],
+      "node_tags": ["city", "settlement", "capital"]
+    },
     "notes": "Static map for MVP"
   },
   "nodes": {
@@ -127,16 +144,7 @@ self.edges: List[Edge] = []
       "name": "Узел 1",
       "pos": [400.0, 300.0],
       "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1",
-      "ui": {
-        "icon": null,
-        "color": null,
-        "size": null
-      },
-      "meta": {
-        "importance": null,
-        "lore": null
-      }
+      "owner_id": "Kingdom1"
     }
   },
   "edges": [
@@ -157,10 +165,17 @@ self.edges: List[Edge] = []
 **Особенности:**
 - `nodes` как dict (удобно редактировать, стабильные ключи)
   - **Ключ словаря = ID узла** (не нужно дублировать в поле "id")
+  - **Дефолты для ui/meta** в `metadata.defaults` - не нужно хранить null в каждом узле
 - `edges` как list (меньше шанс дублировать)
 - `length_km` НЕ хранится - вычисляется из координат узлов и `km_per_unit`
 - Все поля опциональны, кроме обязательных (name, pos для узлов; from, to для рёбер)
 - `km_per_unit` в metadata - коэффициент для перевода world units в километры
+- `defaults` в metadata - дефолтные значения для ui/meta (применяются при загрузке)
+- `dictionary` в metadata - справочник допустимых значений для валидации:
+  - `owners` - допустимые owner_id
+  - `road_types` - допустимые типы дорог
+  - `biomes` - допустимые биомы
+  - `node_tags` - допустимые теги узлов
 
 ---
 

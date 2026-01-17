@@ -35,21 +35,16 @@ def convert_legacy_map(input_path: Path, output_path: Path, km_per_unit: float =
             continue
         
         # Конвертируем в новый формат (id - это ключ, не поле)
+        # ui и meta не добавляем - будут использоваться дефолты
         new_node = {
             "name": node.get("name", node_id),
             "pos": node.get("pos", [0.0, 0.0]),
             "tags": [],
-            "owner_id": node.get("kingdom"),
-            "ui": {
-                "icon": None,
-                "color": None,
-                "size": None
-            },
-            "meta": {
-                "importance": None,
-                "lore": None
-            }
+            "owner_id": node.get("kingdom")
         }
+        
+        # Добавляем ui/meta только если они отличаются от дефолтов
+        # (пока не реализовано, можно добавить позже)
         
         # Конвертируем старые поля в tags
         if node.get("node_type"):
@@ -115,6 +110,23 @@ def convert_legacy_map(input_path: Path, output_path: Path, km_per_unit: float =
             "updated_at": datetime.now().isoformat() + "Z",
             "bounds": bounds,
             "km_per_unit": km_per_unit,
+            "defaults": {
+                "node_ui": {
+                    "icon": None,
+                    "color": None,
+                    "size": None
+                },
+                "node_meta": {
+                    "importance": None,
+                    "lore": None
+                }
+            },
+            "dictionary": {
+                "owners": [],
+                "road_types": ["main", "secondary", "path", "center"],
+                "biomes": [],
+                "node_tags": []
+            },
             "notes": f"Converted from {input_path.name}"
         },
         "nodes": new_nodes,
