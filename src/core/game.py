@@ -2,9 +2,9 @@
 Главный игровой цикл
 """
 from typing import Optional
-from core.world import World
-from entities.unit import Squad
-from core.time import GameTime
+from .world import World
+from ..entities.unit import Squad
+from .time import GameTime
 
 
 class Game:
@@ -24,7 +24,7 @@ class Game:
         Args:
             generate_map: Если True и карта не загружена, генерирует новую карту
         """
-        from utils.map_data import CAPITALS, CENTER_POS, RING_ORDER
+        from ..utils.map_data import CAPITALS, CENTER_POS, RING_ORDER
         
         # Если карта не загружена и нужно сгенерировать
         if generate_map and len(self.world.nodes) == 0:
@@ -40,7 +40,7 @@ class Game:
     def start_new_game(self):
         """Начинает новую игру"""
         # Герой начинает одним персонажем в центре
-        from entities.unit import Character, Squad, UnitType
+        from ..entities.unit import Character, Squad, UnitType
         
         leader = Character(
             strength=5, dexterity=5, endurance=5,

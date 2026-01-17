@@ -2,15 +2,15 @@
 Мир и карта
 """
 from typing import Dict, List, Optional, Tuple
-from entities.node import Node
-from utils.loader import load_map_structure
+from ..entities.node import Node
+from ..utils.loader import load_map_structure
 import math
 
 
 class World:
     """Мир игры - карта с узлами и рёбрами"""
     
-    def __init__(self, load_saved: bool = True):
+    def __init__(self, load_saved: bool = False):
         """
         Инициализация мира
         
@@ -38,14 +38,62 @@ class World:
                     self.add_node(node)
                 
                 # Добавляем рёбра
-                for edge_from, edge_to in edges:
-                    self.add_edge(edge_from, edge_to)
+                for edge in edges:
+                    if len(edge) >= 2:
+                        self.add_edge(edge[0], edge[1])
                 
                 print(f"Карта загружена из {storage.save_path}")
                 if metadata:
                     print(f"Версия: {metadata.get('version', 'unknown')}")
             except Exception as e:
                 print(f"Ошибка загрузки карты: {e}. Создана пустая карта.")
+    
+    def create_simple_map(self):
+        """Создаёт простую карту (3 узла треугольником) для тестирования"""
+        # Очищаем текущую карту
+        self.nodes.clear()
+        self.edges.clear()
+        self.kingdoms.clear()
+        
+        # Создаём 3 узла треугольником
+        node1 = Node(
+            id="Node1",
+            name="Узел 1",
+            pos=(400.0, 300.0),
+            node_type="City",
+            kingdom="Test",
+            role="City"
+        )
+        
+        node2 = Node(
+            id="Node2",
+            name="Узел 2",
+            pos=(600.0, 200.0),
+            node_type="City",
+            kingdom="Test",
+            role="City"
+        )
+        
+        node3 = Node(
+            id="Node3",
+            name="Узел 3",
+            pos=(600.0, 400.0),
+            node_type="City",
+            kingdom="Test",
+            role="City"
+        )
+        
+        # Добавляем узлы
+        self.add_node(node1)
+        self.add_node(node2)
+        self.add_node(node3)
+        
+        # Создаём рёбра (треугольник)
+        self.add_edge("Node1", "Node2")
+        self.add_edge("Node2", "Node3")
+        self.add_edge("Node3", "Node1")
+        
+        print("Простая карта создана: 3 узла треугольником")
     
     def generate_from_config(
         self,
@@ -63,8 +111,8 @@ class World:
             ring_order: Порядок королевств по кругу (если None, используется порядок из capitals)
             save_map: Сохранять ли карту после генерации
         """
-        from utils.map_generator import MapGenerator
-        from utils.map_storage import MapStorage
+        from ..utils.map_generator import MapGenerator
+        from ..utils.map_storage import MapStorage
         
         # Очищаем текущую карту
         self.nodes.clear()
@@ -84,8 +132,9 @@ class World:
             self.add_node(node)
         
         # Добавляем рёбра
-        for edge_from, edge_to in edges:
-            self.add_edge(edge_from, edge_to)
+        for edge in edges:
+            if len(edge) >= 2:
+                self.add_edge(edge[0], edge[1])
         
         # Сохраняем карту
         if save_map:
@@ -196,10 +245,10 @@ class World:
             MapVisualizer объект
         """
         if style == "bb":
-            from utils.map_visualizer_bb import BattleBrothersStyleVisualizer
+            from ..utils.map_visualizer_bb import BattleBrothersStyleVisualizer
             visualizer = BattleBrothersStyleVisualizer()
         else:
-            from utils.map_visualizer import MapVisualizer
+            from ..utils.map_visualizer import MapVisualizer
             visualizer = MapVisualizer()
         
         visualizer.draw_map(self.nodes, self.edges, path=path)
