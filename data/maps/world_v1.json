@@ -17,9 +17,9 @@
       }
     },
     "auto_bounds": true,
-    "dictionary": {
+    "entities": {
       "owners": {
-        "Kingdom1": {
+        "Kingdom_Undead": {
           "name": "Королевство Креста"
         },
         "Kingdom2": {
@@ -44,36 +44,47 @@
           "name": "Северо-Западный край"
         }
       },
-      "road_types": ["main", "secondary", "path", "center"],
-      "biomes": ["plains", "forest", "mountain", "desert", "swamp"],
-      "node_tags": ["city", "settlement", "capital", "outpost", "center", "neutral", "farm", "mine", "lumber", "tradepost", "ruin"]
+      "road_types": {
+        "main": {},
+        "secondary": {},
+        "path": {},
+        "center": {}
+      },
+      "biomes": {
+        "plains": {},
+        "forest": {},
+        "mountain": {},
+        "desert": {},
+        "swamp": {}
+      },
+      "node_tags": {
+        "city": {},
+        "settlement": {},
+        "capital": {},
+        "outpost": {},
+        "center": {},
+        "neutral": {},
+        "farm": {},
+        "mine": {},
+        "lumber": {},
+        "tradepost": {},
+        "ruin": {}
+      }
     },
     "notes": "Static map template for MVP. Fill in nodes and edges."
   },
   "nodes": {
-    "Center": {
-      "name": "Center",
-      "pos": [500.0, 500.0],
-      "tags": ["center", "neutral"],
-      "owner_id": null
+    "Undead": {
+      "name": "Capital of Undead",
+      "pos": [1000.0, 1000.0],
+      "tags": ["capital", "settlement"],
+      "owner_id": "Kingdom_Undead"
     },
-    "Node1": {
-      "name": "Узел 1",
-      "pos": [400.0, 300.0],
-      "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1"
-    },
-    "Node2": {
-      "name": "Узел 2",
-      "pos": [600.0, 200.0],
-      "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1"
-    },
-    "Node3": {
-      "name": "Узел 3",
-      "pos": [600.0, 400.0],
-      "tags": ["city", "settlement"],
-      "owner_id": "Kingdom1"
+    "Demons": {
+      "name": "Capital of Demons",
+      "pos": [1000.0, 0.0],
+      "tags": ["capital", "settlement"],
+      "owner_id": "Kingdom_Demons"
     }
   },
   "edges": [
@@ -83,28 +94,6 @@
       "road_type": "main",
       "biome": null,
       "tags": []
-    },
-    {
-      "from": "Node2",
-      "to": "Node3",
-      "road_type": "main",
-      "biome": null,
-      "tags": []
-    },
-    {
-      "from": "Node3",
-      "to": "Node1",
-      "road_type": "secondary",
-      "biome": null,
-      "tags": []
-    },
-    {
-      "from": "Node1",
-      "to": "Center",
-      "road_type": "path",
-      "length_km": 15.5,
-      "biome": null,
-      "tags": ["dangerous"]
     }
   ]
 }

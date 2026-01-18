@@ -83,20 +83,30 @@ class MapViewer:
         errors = []
         warnings = []
         
-        # Получаем словарь допустимых значений
-        dictionary = self.metadata.get("dictionary", {})
+        # Получаем данные о сущностях (entities вместо dictionary)
+        entities = self.metadata.get("entities", {})
+        if not entities:
+            # Обратная совместимость со старым форматом (dictionary)
+            entities = self.metadata.get("dictionary", {})
         
-        # owners теперь объект, извлекаем ключи
-        owners_dict = dictionary.get("owners", {})
+        # Извлекаем ключи из объектов (или списков для обратной совместимости)
+        def get_entity_keys(entity_dict, key):
+            data = entity_dict.get(key, {})
+            if isinstance(data, dict):
+                return set(data.keys())
+            elif isinstance(data, list):
+                return set(data)
+            return set()
+        
+        owners_dict = entities.get("owners", {})
         if isinstance(owners_dict, dict):
-            allowed_owners = set(owners_dict.keys())
+            defined_owners = set(owners_dict.keys())
         else:
-            # Обратная совместимость со старым форматом (список)
-            allowed_owners = set(owners_dict) if isinstance(owners_dict, list) else set()
+            defined_owners = set(owners_dict) if isinstance(owners_dict, list) else set()
         
-        allowed_road_types = set(dictionary.get("road_types", []))
-        allowed_biomes = set(dictionary.get("biomes", []))
-        allowed_node_tags = set(dictionary.get("node_tags", []))
+        defined_road_types = get_entity_keys(entities, "road_types")
+        defined_biomes = get_entity_keys(entities, "biomes")
+        defined_node_tags = get_entity_keys(entities, "node_tags")
         
         # Проверка узлов
         node_ids = set()
@@ -114,18 +124,17 @@ class MapViewer:
             elif len(node_data["pos"]) != 2:
                 errors.append(f"Node {node_id} invalid 'pos' (must be [x, y])")
             
-            # Валидация owner_id по словарю
+            # Валидация owner_id - если используется, данные должны существовать
             owner_id = node_data.get("owner_id")
             if owner_id is not None:
-                if allowed_owners and owner_id not in allowed_owners:
-                    errors.append(f"Node {node_id} has invalid owner_id '{owner_id}'. Allowed: {sorted(allowed_owners)}")
+                if owner_id not in defined_owners:
+                    errors.append(f"Node {node_id} uses owner_id '{owner_id}' but it's not defined in entities.owners")
             
-            # Валидация tags по словарю (только предупреждения, не ошибки)
+            # Валидация tags - если используется, данные должны существовать (предупреждение)
             tags = node_data.get("tags", [])
-            if allowed_node_tags:
-                for tag in tags:
-                    if tag not in allowed_node_tags:
-                        warnings.append(f"Node {node_id} has unknown tag '{tag}'. Known tags: {sorted(allowed_node_tags)}")
+            for tag in tags:
+                if defined_node_tags and tag not in defined_node_tags:
+                    warnings.append(f"Node {node_id} uses tag '{tag}' but it's not defined in entities.node_tags")
         
         # Проверка рёбер
         edge_set = set()
@@ -143,17 +152,17 @@ class MapViewer:
             if to_id not in self.nodes:
                 errors.append(f"Edge {i} references non-existent node: {to_id}")
             
-            # Валидация road_type по словарю
+            # Валидация road_type - если используется, данные должны существовать
             road_type = edge.get("road_type")
             if road_type is not None:
-                if allowed_road_types and road_type not in allowed_road_types:
-                    errors.append(f"Edge {i} ({from_id} -> {to_id}) has invalid road_type '{road_type}'. Allowed: {sorted(allowed_road_types)}")
+                if road_type not in defined_road_types:
+                    errors.append(f"Edge {i} ({from_id} -> {to_id}) uses road_type '{road_type}' but it's not defined in entities.road_types")
             
-            # Валидация biome по словарю
+            # Валидация biome - если используется, данные должны существовать (предупреждение)
             biome = edge.get("biome")
             if biome is not None:
-                if allowed_biomes and biome not in allowed_biomes:
-                    warnings.append(f"Edge {i} ({from_id} -> {to_id}) has unknown biome '{biome}'. Allowed: {sorted(allowed_biomes)}")
+                if defined_biomes and biome not in defined_biomes:
+                    warnings.append(f"Edge {i} ({from_id} -> {to_id}) uses biome '{biome}' but it's not defined in entities.biomes")
             
             # Проверка дубликатов (A-B == B-A)
             canonical = tuple(sorted([from_id, to_id]))

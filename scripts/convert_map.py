@@ -122,11 +122,16 @@ def convert_legacy_map(input_path: Path, output_path: Path, km_per_unit: float =
                 }
             },
             "auto_bounds": True,
-            "dictionary": {
+            "entities": {
                 "owners": {},
-                "road_types": ["main", "secondary", "path", "center"],
-                "biomes": [],
-                "node_tags": []
+                "road_types": {
+                    "main": {},
+                    "secondary": {},
+                    "path": {},
+                    "center": {}
+                },
+                "biomes": {},
+                "node_tags": {}
             },
             "notes": f"Converted from {input_path.name}"
         },
