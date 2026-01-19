@@ -567,6 +567,8 @@ python scripts/convert_kingdoms_from_sheets.py kingdoms.csv --update-world
 
 ### Основные Документы
 - `docs/PROJECT_KNOWLEDGE_BASE.md` — этот файл (база знаний)
+- `docs/WORLD_LORE.md` — глобальный лор мира (CANON-DRAFT)
+- `docs/KINGDOMS_LORE.md` — лор королевств (CANON-DRAFT)
 - `docs/STATIC_MAP_IMPLEMENTATION_PLAN.md` — план реализации статической карты
 - `docs/MAP_DATA_STRUCTURE.md` — структура данных карты
 - `docs/KINGDOMS_TABLE_ANALYSIS.md` — анализ таблицы королевств
