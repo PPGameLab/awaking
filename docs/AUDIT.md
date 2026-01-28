@@ -30,8 +30,6 @@ src/
 │   ├── __init__.py                [runtime]
 │   ├── node.py                    [runtime]
 │   └── unit.py                    [runtime]
-├── mechanics/
-│   └── __init__.py                [runtime]
 ├── ui/
 │   ├── __init__.py                [runtime]
 │   ├── game_window.py             [runtime]
@@ -164,10 +162,8 @@ design/
 scripts/
 ├── README.md                      [spec]
 ├── benchmark_performance.py       [tools]
-├── benchmark_results.json         [tools]
 ├── convert_kingdoms_from_sheets.py [tools] (data pipeline)
 ├── convert_map.py                 [tools] (data pipeline)
-├── test.py                        [tools]
 ├── view_map.py                    [tools] (data pipeline)
 ├── visualize_map_bb.py           [tools]
 ├── visualize_map_interactive.py   [tools]

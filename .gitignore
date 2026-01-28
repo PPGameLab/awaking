@@ -54,3 +54,6 @@ data/maps/generated_map.json
 # Test files
 test_output/
 *.log
+
+# Generated / artifacts
+scripts/benchmark_results.json
