@@ -29,6 +29,9 @@ ENV/
 .vscode/
 .idea/
 .cursor/
+
+# Local docs (not in repo)
+docs/
 *.swp
 *.swo
 *~
