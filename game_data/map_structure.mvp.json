@@ -1,0 +1,195 @@
+{
+  "status": "CANON",
+  "version": "MVP",
+  "description": "Структура карты мира. Определяет расположение королевств, типы узлов, связи.",
+  "map_type": "static",
+  "source_file": "data/maps/world_v1.json",
+  "kingdoms_layout": {
+    "north": {
+      "kingdom": "Королевство Креста",
+      "id": "kingdom-cross",
+      "attribute": "greed"
+    },
+    "northeast": {
+      "kingdom": "Королевство Инженеров",
+      "id": "kingdom-engineers",
+      "attribute": "intelligence"
+    },
+    "east": {
+      "kingdom": "Королевство Магии Тела",
+      "id": "kingdom-body-magic",
+      "attribute": "endurance"
+    },
+    "southeast": {
+      "kingdom": "Вулканическое Королевство",
+      "id": "kingdom-volcanic",
+      "attribute": "strength"
+    },
+    "south": {
+      "kingdom": "Потустороннее Королевство",
+      "id": "kingdom-otherworldly",
+      "attribute": "luck"
+    },
+    "southwest": {
+      "kingdom": "Край Природных Защитников",
+      "id": "kingdom-nature-guardians",
+      "attribute": "wisdom"
+    },
+    "west": {
+      "kingdom": "Королевство Стойкости и Духа",
+      "id": "kingdom-spirit-endurance",
+      "attribute": "spirit"
+    },
+    "northwest": {
+      "kingdom": "Северо-Западный край",
+      "id": "kingdom-northwest",
+      "attribute": "dexterity"
+    },
+    "center": {
+      "name": "Центр (Нейтральная зона)",
+      "id": "center-zone",
+      "description": "Нейтральная пустая зона без поселений",
+      "visual": "Огромная область, окруженная горами со всех сторон, но есть проходы и места для прохождения к каждому королевству. Ближайшее что приходит в голову - Мордор, но если бы он был в центре карты",
+      "connections": "Все королевства могут пройти через центр"
+    }
+  },
+  "node_types": {
+    "status": "CANON",
+    "capital": {
+      "id": "capital",
+      "name": "Столица",
+      "description": "Главный город королевства",
+      "hierarchy_level": 1
+    },
+    "city": {
+      "id": "city",
+      "name": "Город",
+      "description": "Крупное поселение",
+      "hierarchy_level": 2
+    },
+    "settlement": {
+      "id": "settlement",
+      "name": "Поселение",
+      "description": "Небольшое поселение",
+      "hierarchy_level": 3
+    },
+    "outpost": {
+      "id": "outpost",
+      "name": "Аванпост",
+      "description": "Военный или торговый форпост",
+      "hierarchy_level": 4
+    },
+    "farm": {
+      "id": "farm",
+      "name": "Ферма",
+      "description": "Сельскохозяйственное поселение",
+      "hierarchy_level": 5
+    },
+    "mine": {
+      "id": "mine",
+      "name": "Шахта",
+      "description": "Добыча ресурсов",
+      "hierarchy_level": 5
+    },
+    "lumber": {
+      "id": "lumber",
+      "name": "Лесопилка",
+      "description": "Заготовка древесины",
+      "hierarchy_level": 5
+    },
+    "tradepost": {
+      "id": "tradepost",
+      "name": "Торговый пост",
+      "description": "Торговое поселение",
+      "hierarchy_level": 4
+    },
+    "ruin": {
+      "id": "ruin",
+      "name": "Руины",
+      "description": "Заброшенное место",
+      "hierarchy_level": 0
+    },
+    "center": {
+      "id": "center",
+      "name": "Центральная зона",
+      "description": "Нейтральная опасная зона",
+      "hierarchy_level": 0
+    },
+    "neutral": {
+      "id": "neutral",
+      "name": "Нейтральная зона",
+      "description": "Территория без владельца",
+      "hierarchy_level": 0
+    }
+  },
+  "connection_structure": {
+    "within_kingdom": {
+      "type": "hierarchical",
+      "description": "Capital → Cities → Settlements → Outposts",
+      "status": "CANON"
+    },
+    "between_kingdoms": {
+      "type": "through_center",
+      "description": "Много узлов, вариантивность через центральную зону",
+      "status": "CANON"
+    },
+    "edge_storage": {
+      "type": "canonical",
+      "description": "Каноническая форма (от меньшего ID к большему)",
+      "status": "CANON"
+    }
+  },
+  "road_types": {
+    "main": {
+      "id": "main",
+      "name": "Главная дорога",
+      "speed_multiplier": 1.5,
+      "status": "CANON"
+    },
+    "secondary": {
+      "id": "secondary",
+      "name": "Второстепенная дорога",
+      "speed_multiplier": 1.2,
+      "status": "CANON"
+    },
+    "path": {
+      "id": "path",
+      "name": "Тропа",
+      "speed_multiplier": 1.0,
+      "status": "CANON"
+    },
+    "center": {
+      "id": "center",
+      "name": "Путь через центр",
+      "speed_multiplier": 0.8,
+      "status": "CANON"
+    }
+  },
+  "biomes": {
+    "plains": {
+      "id": "plains",
+      "name": "Равнины",
+      "status": "CANON"
+    },
+    "forest": {
+      "id": "forest",
+      "name": "Лес",
+      "status": "CANON"
+    },
+    "mountain": {
+      "id": "mountain",
+      "name": "Горы",
+      "status": "CANON"
+    },
+    "desert": {
+      "id": "desert",
+      "name": "Пустыня",
+      "status": "CANON"
+    },
+    "swamp": {
+      "id": "swamp",
+      "name": "Болото",
+      "status": "CANON"
+    }
+  }
+}

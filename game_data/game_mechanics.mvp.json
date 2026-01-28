@@ -1,0 +1,85 @@
+{
+  "status": "CANON",
+  "version": "MVP",
+  "description": "Базовая механика игры. MVP версия с основными системами.",
+  "time_system": {
+    "tick_duration": 1,
+    "unit": "секунда",
+    "description": "Один тик = 1 секунда игрового времени",
+    "status": "CANON"
+  },
+  "calendar": {
+    "days_per_week": 7,
+    "weeks_per_month": 4,
+    "months_per_year": 12,
+    "description": "Календарная система: 7 дней в неделе, 4 недели в месяце, 12 месяцев в году",
+    "status": "CANON"
+  },
+  "movement": {
+    "base_speed": 1.0,
+    "unit": "единиц в тик",
+    "description": "Базовая скорость движения отряда по карте",
+    "status": "CANON",
+    "road_multipliers": {
+      "main": 1.5,
+      "secondary": 1.2,
+      "path": 1.0,
+      "center": 0.8,
+      "description": "Множители скорости в зависимости от типа дороги",
+      "status": "CANON"
+    }
+  },
+  "combat": {
+    "type": "TBD",
+    "description": "Система боя будет реализована позже",
+    "status": "TBD",
+    "note": "Для MVP бой может быть автоматическим или упрощённым"
+  },
+  "resources": {
+    "food": {
+      "name": "Еда",
+      "description": "Основной ресурс для выживания отряда",
+      "consumption_rate": "TBD",
+      "status": "TBD"
+    },
+    "money": {
+      "name": "Деньги",
+      "description": "Валюта для торговли и найма",
+      "status": "TBD"
+    }
+  },
+  "units": {
+    "recruitment": {
+      "description": "Найм юнитов в поселениях",
+      "status": "TBD"
+    },
+    "management": {
+      "description": "Управление отрядом, экипировка, характеристики",
+      "status": "TBD"
+    }
+  },
+  "map": {
+    "type": "static",
+    "description": "Статическая карта, загружаемая из JSON",
+    "status": "CANON",
+    "file": "data/maps/world_v1.json"
+  },
+  "encounters": {
+    "description": "Встречи на карте (враги, события, торговцы)",
+    "status": "TBD",
+    "note": "Для MVP могут быть упрощены или отсутствовать"
+  },
+  "reputation": {
+    "description": "Репутация с королевствами влияет на цены и доступность контрактов",
+    "status": "TBD"
+  },
+  "contracts": {
+    "description": "Контракты в поселениях (охрана, доставка, охота)",
+    "status": "TBD",
+    "note": "Для MVP могут быть упрощены"
+  },
+  "trade": {
+    "description": "Торговля в поселениях, цены зависят от специализации узла",
+    "status": "TBD"
+  }
+}

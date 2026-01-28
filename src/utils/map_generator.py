@@ -2,6 +2,7 @@
 Генератор карты на основе конфигурации
 """
 import math
+import json
 from typing import Dict, List, Tuple, Optional
 import sys
 from pathlib import Path
@@ -47,9 +48,17 @@ def lerp(a: Tuple[float, float], b: Tuple[float, float], t: float) -> Tuple[floa
 class MapGenerator:
     """Генератор карты на основе конфигурации"""
     
-    def __init__(self, config_path: str = "map_config.json"):
+    def __init__(self, config_path: str = "game_data/map_config.mvp.json"):
         """Инициализация генератора"""
-        self.config = load_json(config_path)
+        base_path = Path(__file__).parent.parent.parent
+        data_path = base_path / config_path
+        
+        if not data_path.exists():
+            raise FileNotFoundError(f"Файл {config_path} не найден")
+        
+        with open(data_path, 'r', encoding='utf-8') as f:
+            self.config = json.load(f)
+        
         self.node_structure = self.config["node_structure"]
         self.params = self.config["generation_params"]
         self.connection_rules = self.config["connection_rules"]

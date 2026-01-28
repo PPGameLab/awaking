@@ -12,8 +12,11 @@
 
 ```
 awaking/
-├── data/              # JSON данные (лор, механики)
+├── data/              # Статическая карта и артефакты генерации
 │   └── maps/         # Данные карт (координаты, структура)
+├── game_data/         # Игровые механики и системы (runtime)
+├── lore/              # Лор мира (канон, черновики, глоссарий)
+├── design/            # Спеки и черновики систем
 ├── assets/            # Ресурсы игры
 │   └── maps/         # Графические ресурсы для карты
 ├── src/               # Исходный код
@@ -108,10 +111,10 @@ python scripts/benchmark_performance.py
 - `questions/mvp_global.md` - глобальные вопросы для MVP
 
 ### Данные
-- `data/attributes.json` - система характеристик
-- `data/game_mechanics.json` - базовая механика
-- `data/magic_system.json` - система магии
-- `data/maps/world_v1.json` - статическая карта
+- `game_data/attributes.mvp.json` — система характеристик
+- `game_data/game_mechanics.mvp.json` — базовая механика
+- `game_data/magic_system.mvp.json` — система магии
+- `data/maps/world_v1.json` — статическая карта
 
 Полная документация находится в папке `docs/`.
 

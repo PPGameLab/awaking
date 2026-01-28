@@ -280,7 +280,7 @@
 **Хорошо:**
 ```
 Реализуй систему ресурсов:
-- Структура: @data/game_mechanics.json
+- Структура: @game_data/game_mechanics.mvp.json
 - Примеры: @src/core/game.py
 - Документация: @PROJECT_KNOWLEDGE_BASE.md
 ```
@@ -298,7 +298,7 @@
 Шаг 2: Детализация
 "События должны срабатывать при входе в узел, 
 типы: торговля, бой, квест. 
-Структура в @data/game_mechanics.json"
+Структура в @game_data/game_mechanics.mvp.json"
 
 Шаг 3: Реализация
 "Начни с класса Event в @src/mechanics/events.py"
@@ -414,7 +414,7 @@
 Добавь систему событий на карте:
 - События при входе в узел
 - Типы: торговля, бой, квест
-- Структура в @data/game_mechanics.json
+- Структура в @game_data/game_mechanics.mvp.json
 ```
 
 ### ❌ Отсутствие Контекста

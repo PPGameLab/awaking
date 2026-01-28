@@ -85,7 +85,7 @@
 - Развитие: персонаж, отряд, узлы, здания (ориентир: Mount & Blade)
 - Уровни: персонажа, наёмников (Battle Brothers/Mount & Blade), узлов и зданий
 
-**Данные:** `data/map_structure.json`, `data/game_mechanics.json`
+**Данные:** `game_data/map_structure.mvp.json`, `game_data/game_mechanics.mvp.json`
 
 ---
 
@@ -97,7 +97,7 @@
 - **Условия победы:** Опциональная цель — захватить все королевства
 - **Условия поражения:** Нет. Герой будет в плену и сможет сбежать. Просто потеряет деньги, репутацию и прочее
 
-**Данные:** `data/game_mechanics.json`
+**Данные:** `game_data/game_mechanics.mvp.json`
 
 ---
 
@@ -202,8 +202,8 @@
 ---
 
 **Данные:**
-- `data/map_structure.json` — структура карты
-- `data/game_mechanics.json` — базовая механика
-- `data/attributes.json` — характеристики и параметры
+- `game_data/map_structure.mvp.json` — структура карты
+- `game_data/game_mechanics.mvp.json` — базовая механика
+- `game_data/attributes.mvp.json` — характеристики и параметры
 
 **Статус:** ✅ **Готово к разработке MVP** — все критичные вопросы решены (~80% готовности)
