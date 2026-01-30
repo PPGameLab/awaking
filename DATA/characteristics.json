@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "entity_type": "characteristic",
+    "description": "Словарь сущностей типа «характеристика». Баффы и эффекты могут ссылаться на entity_type или на конкретный id."
+  },
+  "characteristics": {
+    "strength": { "name": "Сила", "lore": "LORE/glossary/characteristics/сила.md" },
+    "agility": { "name": "Ловкость", "lore": "LORE/glossary/characteristics/ловкость.md" },
+    "vitality": { "name": "Выносливость", "lore": "LORE/glossary/characteristics/выносливость.md" },
+    "spirit": { "name": "Дух", "lore": "LORE/glossary/characteristics/дух.md" },
+    "greed": { "name": "Алчность", "lore": "LORE/glossary/characteristics/алчность.md" },
+    "luck": { "name": "Удача", "lore": "LORE/glossary/characteristics/удача.md" },
+    "intelligence": { "name": "Интеллект", "lore": "LORE/glossary/characteristics/интеллект.md" },
+    "wisdom": { "name": "Мудрость", "lore": "LORE/glossary/characteristics/мудрость.md" }
+  }
+}
