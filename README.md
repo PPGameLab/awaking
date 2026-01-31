@@ -32,11 +32,6 @@ awaking/
 │   ├── INDEX.md         # Список команд (CMD: BUILD_SNAPSHOT и др.)
 │   └── …
 │
-├── game_data/           # Игровые конфиги (механики, атрибуты) — для будущего кода
-│   ├── attributes.mvp.json
-│   ├── game_mechanics.mvp.json
-│   └── magic_system.mvp.json
-│
 ├── tools/               # Утилиты (list_prompts и др.)
 ├── uwuking.map         # Карта из Azgaar (референс)
 └── requirements.txt    # Зависимости (на момент очистки — без запускаемого кода)
@@ -66,7 +61,6 @@ awaking/
 | `GAME.md` | Вход в код/игру |
 | `WORLD_SNAPSHOT.md` | Контекст для AI (автогенерация) |
 | `PROMPTS/INDEX.md` | Список команд Cursor |
-| `game_data/README.md` | Описание конфигов |
 
 ## Git
 
